@@ -23,8 +23,23 @@ public class App
         Session session = sf.openSession();
 
         Transaction t = session.beginTransaction();
+        // store data
+        Student student1= new Student();
+        student1.setName("abc");
+
+        Student student2 = new Student();
+        student2.setName("def");
+
+        College college = new College();
+        college.setName("mit");
+
+        student1.setCollege(college);
+        student2.setCollege(college);
+
+        session.persist(student1);
+        session.persist(student2);
         t.commit();
         session.close();
-
+        System.out.println("success");
     }
 }
